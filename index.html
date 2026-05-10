@@ -21,7 +21,6 @@
     --binary-host: #fbbf24;
     --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   }
-
   [data-theme="light"] {
     --bg: #f1f5f9;
     --surface: #ffffff;
@@ -44,165 +43,112 @@
   body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: var(--bg); color: var(--text);
     line-height: 1.5;
     transition: background-color 0.25s ease, color 0.25s ease;
-    display: flex;
-    flex-direction: column;
+    display: flex; flex-direction: column;
   }
-
   header {
     padding: 1.5rem 1.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    max-width: 1180px; width: 100%; margin: 0 auto;
   }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: -0.01em;
-  }
-
+  .brand { display: flex; align-items: center; gap: 0.75rem; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.01em; }
   .logo {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
+    width: 36px; height: 36px; border-radius: 10px;
     background: linear-gradient(135deg, var(--accent), #6366f1);
-    display: grid;
-    place-items: center;
-    color: white;
-    font-weight: 800;
-    font-size: 0.9rem;
+    display: grid; place-items: center; color: white; font-weight: 800; font-size: 0.9rem;
     box-shadow: var(--shadow);
   }
-
   .theme-toggle {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    transition: transform 0.15s ease, background 0.2s ease;
+    background: var(--surface); border: 1px solid var(--border); color: var(--text);
+    width: 42px; height: 42px; border-radius: 10px; cursor: pointer;
+    display: grid; place-items: center; transition: transform 0.15s ease, background 0.2s ease;
   }
   .theme-toggle:hover { transform: translateY(-1px); background: var(--surface-2); }
   .theme-toggle svg { width: 20px; height: 20px; }
 
-  main {
-    flex: 1;
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 1.25rem 2rem;
-  }
-
-  h1 {
-    font-size: clamp(1.75rem, 3vw, 2.4rem);
-    margin: 0 0 0.5rem;
-    letter-spacing: -0.02em;
-  }
+  main { flex: 1; max-width: 1180px; width: 100%; margin: 0 auto; padding: 0 1.25rem 2rem; }
+  h1 { font-size: clamp(1.75rem, 3vw, 2.4rem); margin: 0 0 0.5rem; letter-spacing: -0.02em; }
   .lede { color: var(--text-dim); margin: 0 0 1.5rem; }
 
+  /* Tabs */
+  .tabs {
+    display: flex; gap: 0.25rem; margin-bottom: 1.25rem;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 0.3rem; width: fit-content; box-shadow: var(--shadow);
+  }
+  .tab {
+    background: transparent; border: 0; color: var(--text-dim);
+    padding: 0.55rem 1.1rem; border-radius: 8px; font-size: 0.92rem; font-weight: 500;
+    cursor: pointer; font-family: inherit; transition: all 0.15s ease;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.active { background: var(--accent); color: white; }
+
+  .panel { display: none; }
+  .panel.active { display: block; }
+
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 1.5rem; box-shadow: var(--shadow);
   }
 
-  .input-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.75rem;
-    align-items: end;
-  }
-
-  .field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  .field label {
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    font-weight: 500;
-  }
+  .input-row { display: grid; grid-template-columns: 1fr auto; gap: 0.75rem; align-items: end; }
+  .field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .field label { font-size: 0.85rem; color: var(--text-dim); font-weight: 500; }
 
   .ip-input {
-    display: flex;
-    background: var(--surface-2);
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    overflow: hidden;
+    display: flex; background: var(--surface-2);
+    border: 1.5px solid var(--border); border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease; overflow: hidden;
   }
   .ip-input:focus-within {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent);
   }
   .ip-input input {
-    background: transparent;
-    border: 0;
-    outline: 0;
-    color: var(--text);
-    padding: 0.75rem 0.9rem;
-    font-size: 1.05rem;
+    background: transparent; border: 0; outline: 0; color: var(--text);
+    padding: 0.75rem 0.9rem; font-size: 1.05rem;
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    width: 100%;
-    min-width: 0;
+    width: 100%; min-width: 0;
   }
   .ip-input .slash {
-    color: var(--text-dim);
-    padding: 0.75rem 0.5rem 0.75rem 0;
-    font-family: ui-monospace, monospace;
-    font-size: 1.05rem;
+    color: var(--text-dim); padding: 0.75rem 0.5rem 0.75rem 0;
+    font-family: ui-monospace, monospace; font-size: 1.05rem;
   }
-  .cidr-input { max-width: 80px; }
+  .cidr-input { max-width: 110px; }
   .cidr-input input { padding-left: 0; }
 
+  textarea.batch-input {
+    background: var(--surface-2); border: 1.5px solid var(--border); border-radius: 10px;
+    color: var(--text); width: 100%; padding: 0.75rem 0.9rem; font-size: 0.95rem;
+    font-family: ui-monospace, monospace; min-height: 140px; resize: vertical;
+  }
+  textarea.batch-input:focus { outline: 0; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+
   button.primary {
-    background: var(--accent);
-    color: white;
-    border: 0;
-    padding: 0 1.5rem;
-    height: 48px;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
+    background: var(--accent); color: white; border: 0;
+    padding: 0 1.5rem; height: 48px; border-radius: 10px;
+    font-weight: 600; font-size: 1rem; cursor: pointer;
     transition: background 0.15s ease, transform 0.1s ease;
   }
   button.primary:hover { background: var(--accent-hover); }
   button.primary:active { transform: scale(0.98); }
 
-  .preset-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-  .chip {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    padding: 0.4rem 0.85rem;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-family: ui-monospace, monospace;
-    cursor: pointer;
+  button.secondary {
+    background: var(--surface-2); color: var(--text); border: 1px solid var(--border);
+    padding: 0.5rem 0.95rem; border-radius: 8px;
+    font-size: 0.88rem; cursor: pointer; font-family: inherit;
     transition: all 0.15s ease;
+  }
+  button.secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  .preset-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; align-items: center; }
+  .chip {
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+    padding: 0.4rem 0.85rem; border-radius: 999px; font-size: 0.85rem;
+    font-family: ui-monospace, monospace; cursor: pointer; transition: all 0.15s ease;
   }
   .chip:hover { color: var(--text); border-color: var(--accent); }
 
@@ -210,162 +156,213 @@
     background: color-mix(in srgb, var(--danger) 12%, transparent);
     border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
     color: var(--danger);
-    padding: 0.75rem 1rem;
-    border-radius: 10px;
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    display: none;
+    padding: 0.75rem 1rem; border-radius: 10px; margin-top: 1rem;
+    font-size: 0.9rem; display: none;
   }
   .error.show { display: block; }
 
-  .results {
-    margin-top: 1.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-  }
+  .results { margin-top: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; }
   .result-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.1rem 1.25rem;
-    box-shadow: var(--shadow);
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    padding: 1.1rem 1.25rem; box-shadow: var(--shadow);
   }
   .result-card h3 {
-    margin: 0 0 0.85rem;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-dim);
-    font-weight: 600;
+    margin: 0 0 0.85rem; font-size: 0.78rem; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-dim); font-weight: 600;
   }
   .kv {
-    display: grid;
-    grid-template-columns: 110px 1fr auto;
-    gap: 0.5rem 0.75rem;
-    align-items: center;
-    padding: 0.35rem 0;
-    font-size: 0.92rem;
+    display: grid; grid-template-columns: 130px 1fr auto;
+    gap: 0.5rem 0.75rem; align-items: center;
+    padding: 0.35rem 0; font-size: 0.92rem;
   }
   .kv + .kv { border-top: 1px dashed var(--border); }
   .kv .k { color: var(--text-dim); font-size: 0.82rem; }
   .kv .v {
     font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    word-break: break-all;
-    color: var(--text);
+    word-break: break-all; color: var(--text);
   }
   .copy-btn {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-dim);
-    width: 26px;
-    height: 26px;
-    border-radius: 6px;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-    transition: all 0.15s ease;
+    background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+    width: 26px; height: 26px; border-radius: 6px; cursor: pointer;
+    display: grid; place-items: center; transition: all 0.15s ease;
   }
   .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
   .copy-btn svg { width: 13px; height: 13px; }
   .copy-btn.copied { color: var(--success); border-color: var(--success); }
 
   .binary {
-    font-family: ui-monospace, monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    word-break: break-all;
+    font-family: ui-monospace, monospace; font-size: 0.85rem;
+    letter-spacing: 0.02em; word-break: break-all;
   }
-  .bin-net { color: var(--binary-net); font-weight: 600; }
+  .bin-net  { color: var(--binary-net);  font-weight: 600; }
   .bin-host { color: var(--binary-host); font-weight: 600; }
-  .bin-dot { color: var(--text-dim); }
+  .bin-dot  { color: var(--text-dim); }
 
   .badge {
-    display: inline-block;
-    padding: 0.15rem 0.55rem;
-    border-radius: 6px;
-    font-size: 0.72rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
+    display: inline-block; padding: 0.15rem 0.55rem; border-radius: 6px;
+    font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
   }
   .badge.private { background: color-mix(in srgb, var(--success) 15%, transparent); color: var(--success); }
-  .badge.public  { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
-  .badge.special { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .badge.public  { background: color-mix(in srgb, var(--accent) 18%, transparent);  color: var(--accent); }
+  .badge.special { background: color-mix(in srgb, var(--warn) 18%, transparent);    color: var(--warn); }
 
   .full-row { grid-column: 1 / -1; }
 
-  .subnets-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: ui-monospace, monospace;
-    font-size: 0.88rem;
-  }
+  .subnets-table { width: 100%; border-collapse: collapse; font-family: ui-monospace, monospace; font-size: 0.88rem; }
   .subnets-table th, .subnets-table td {
-    padding: 0.55rem 0.75rem;
-    text-align: left;
-    border-bottom: 1px solid var(--border);
+    padding: 0.55rem 0.75rem; text-align: left; border-bottom: 1px solid var(--border);
   }
   .subnets-table th {
-    color: var(--text-dim);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-weight: 600;
+    color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase;
+    letter-spacing: 0.06em; font-weight: 600;
   }
   .subnets-table tbody tr:hover { background: var(--surface-2); }
 
-  .split-controls {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-    margin-bottom: 1rem;
+  .controls {
+    display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;
+    margin-top: 0.5rem; margin-bottom: 1rem;
   }
-  .split-controls select, .split-controls label {
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    color: var(--text);
-    padding: 0.5rem 0.75rem;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-family: inherit;
+  .controls select, .controls input[type="number"], .controls input[type="text"] {
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+    padding: 0.5rem 0.75rem; border-radius: 8px; font-size: 0.9rem; font-family: inherit;
   }
-  .split-controls label { color: var(--text-dim); border: none; padding-left: 0; background: transparent; }
+  .controls label { color: var(--text-dim); font-size: 0.9rem; }
 
   footer {
-    text-align: center;
-    padding: 1.25rem;
-    color: var(--text-dim);
-    font-size: 0.88rem;
-    border-top: 1px solid var(--border);
+    text-align: center; padding: 1.25rem; color: var(--text-dim);
+    font-size: 0.88rem; border-top: 1px solid var(--border);
   }
   footer a { color: var(--accent); text-decoration: none; font-weight: 500; }
   footer a:hover { text-decoration: underline; }
 
   .toast {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 50%;
+    position: fixed; bottom: 1.5rem; left: 50%;
     transform: translateX(-50%) translateY(100px);
-    background: var(--text);
-    color: var(--bg);
-    padding: 0.65rem 1.2rem;
-    border-radius: 8px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    transition: transform 0.25s ease;
-    pointer-events: none;
-    z-index: 100;
-    box-shadow: var(--shadow);
+    background: var(--text); color: var(--bg);
+    padding: 0.65rem 1.2rem; border-radius: 8px; font-size: 0.88rem; font-weight: 500;
+    transition: transform 0.25s ease; pointer-events: none; z-index: 100; box-shadow: var(--shadow);
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
 
+  .hint {
+    font-size: 0.82rem; color: var(--text-dim); margin-top: 0.4rem;
+  }
+  .hint code { background: var(--surface-2); padding: 0.05rem 0.35rem; border-radius: 4px; font-size: 0.85em; }
+
+  .dns-status {
+    font-size: 0.85rem; color: var(--text-dim); margin-top: 0.5rem;
+    font-family: ui-monospace, monospace;
+  }
+  .dns-status .ok { color: var(--success); }
+  .dns-status .err { color: var(--danger); }
+
+  /* Class/Mask dropdowns row */
+  .form-extras {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.75rem; margin-top: 0.85rem;
+  }
+  .form-extras select {
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text);
+    padding: 0.55rem 0.75rem; border-radius: 8px; font-size: 0.9rem; font-family: inherit;
+    width: 100%;
+  }
+  .form-extras label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.8rem; color: var(--text-dim); }
+
+  /* Bit visualizer */
+  .visualizer { padding: 1.25rem; }
+  .visualizer h3 { display: flex; justify-content: space-between; align-items: center; }
+  .bit-grid {
+    display: flex; flex-wrap: wrap; gap: 0.15rem 0.4rem;
+    font-family: ui-monospace, monospace; font-size: 0.95rem;
+    margin: 0.5rem 0 0.85rem;
+    user-select: none;
+  }
+  .bit-octet { display: flex; gap: 0.05rem; }
+  .bit-octet + .bit-octet::before { content: "."; color: var(--text-dim); align-self: center; padding: 0 0.15rem; }
+  .bit {
+    width: 18px; height: 26px;
+    display: grid; place-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.05s ease, background 0.1s ease;
+    font-weight: 600;
+  }
+  .bit.net  { background: color-mix(in srgb, var(--binary-net)  18%, transparent); color: var(--binary-net); }
+  .bit.host { background: color-mix(in srgb, var(--binary-host) 16%, transparent); color: var(--binary-host); }
+  .bit:hover { transform: scale(1.15); }
+  .bit.boundary { box-shadow: -2px 0 0 var(--accent); }
+
+  .v6-bits .bit-grid { gap: 0.1rem 0.3rem; font-size: 0.78rem; }
+  .v6-bits .bit { width: 14px; height: 20px; }
+  .v6-bits .bit-octet + .bit-octet::before { content: ":"; }
+
+  .slider-row {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 0.85rem;
+    align-items: center; margin-top: 0.5rem;
+  }
+  .slider-row input[type="range"] {
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 6px; border-radius: 3px;
+    background: linear-gradient(to right,
+      var(--binary-net) 0%, var(--binary-net) var(--p,75%),
+      var(--binary-host) var(--p,75%), var(--binary-host) 100%);
+    outline: none;
+  }
+  .slider-row input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 2px solid var(--surface);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .slider-row input[type="range"]::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 2px solid var(--surface);
+  }
+  .slider-row .prefix-display {
+    font-family: ui-monospace, monospace; font-weight: 700; color: var(--accent);
+    min-width: 3.5rem; text-align: center; font-size: 1.05rem;
+  }
+  .vis-summary {
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+    margin-top: 0.85rem; font-family: ui-monospace, monospace; font-size: 0.88rem;
+  }
+  .vis-summary span b { color: var(--text-dim); font-weight: 500; margin-right: 0.4rem; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  .share-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--text-dim);
+    padding: 0.35rem 0.75rem; border-radius: 6px; font-size: 0.78rem; cursor: pointer;
+    font-family: inherit;
+  }
+  .share-btn:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* Reference table */
+  details.ref {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 0.85rem 1.25rem; margin-top: 1rem;
+    box-shadow: var(--shadow);
+  }
+  details.ref summary {
+    cursor: pointer; font-weight: 600; color: var(--text);
+    list-style: none; display: flex; justify-content: space-between; align-items: center;
+  }
+  details.ref summary::-webkit-details-marker { display: none; }
+  details.ref summary::after { content: "▾"; color: var(--text-dim); transition: transform 0.2s; }
+  details.ref[open] summary::after { transform: rotate(180deg); }
+  details.ref[open] { padding-bottom: 1.25rem; }
+  details.ref .ref-body { margin-top: 0.85rem; max-height: 380px; overflow: auto; }
+  .ref-table { width: 100%; border-collapse: collapse; font-family: ui-monospace, monospace; font-size: 0.85rem; }
+  .ref-table th, .ref-table td { padding: 0.4rem 0.65rem; text-align: left; border-bottom: 1px solid var(--border); }
+  .ref-table th { color: var(--text-dim); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; position: sticky; top: 0; background: var(--surface); }
+  .ref-table tbody tr { cursor: pointer; }
+  .ref-table tbody tr:hover { background: var(--surface-2); color: var(--accent); }
+
   @media (max-width: 600px) {
     .input-row { grid-template-columns: 1fr; }
-    .kv { grid-template-columns: 90px 1fr auto; }
+    .kv { grid-template-columns: 100px 1fr auto; }
     button.primary { width: 100%; }
+    .bit { width: 14px; height: 22px; }
+    .v6-bits .bit { width: 11px; height: 16px; font-size: 0.7rem; }
   }
 </style>
 </head>
@@ -388,35 +385,124 @@
 </header>
 
 <main>
-  <h1>IPv4 Subnet Calculator</h1>
-  <p class="lede">Enter an IP address with CIDR or netmask to compute network details, host range, and binary breakdown.</p>
+  <h1>IP Subnet Calculator</h1>
+  <p class="lede">A modern, sipcalc-inspired calculator for IPv4 and IPv6 with batch input, recursive subnet splitting, and DNS lookups.</p>
 
-  <div class="card">
-    <form id="calcForm" autocomplete="off">
-      <div class="input-row">
-        <div class="field">
-          <label for="ipInput">IP address / CIDR</label>
-          <div class="ip-input">
-            <input id="ipInput" type="text" placeholder="192.168.1.10" value="192.168.1.10" spellcheck="false" />
-            <span class="slash">/</span>
-            <div class="cidr-input"><input id="cidrInput" type="text" placeholder="24" value="24" spellcheck="false" inputmode="numeric" /></div>
-          </div>
-        </div>
-        <button type="submit" class="primary">Calculate</button>
-      </div>
-      <div class="preset-row">
-        <span style="color:var(--text-dim); font-size:0.85rem; align-self:center; margin-right:0.25rem;">Quick:</span>
-        <button type="button" class="chip" data-preset="10.0.0.1/8">10.0.0.1/8</button>
-        <button type="button" class="chip" data-preset="172.16.5.4/12">172.16.5.4/12</button>
-        <button type="button" class="chip" data-preset="192.168.1.10/24">192.168.1.10/24</button>
-        <button type="button" class="chip" data-preset="192.168.10.50/26">192.168.10.50/26</button>
-        <button type="button" class="chip" data-preset="203.0.113.5/30">203.0.113.5/30</button>
-      </div>
-      <div id="error" class="error"></div>
-    </form>
+  <div class="tabs" role="tablist">
+    <button class="tab active" data-tab="v4" role="tab">IPv4</button>
+    <button class="tab" data-tab="v6" role="tab">IPv6</button>
+    <button class="tab" data-tab="batch" role="tab">Batch</button>
   </div>
 
-  <div id="results" class="results"></div>
+  <!-- ============ IPv4 ============ -->
+  <section class="panel active" id="panel-v4">
+    <div class="card">
+      <form id="formV4" autocomplete="off">
+        <div class="input-row">
+          <div class="field">
+            <label for="v4Ip">IPv4 address / netmask</label>
+            <div class="ip-input">
+              <input id="v4Ip" type="text" placeholder="192.168.1.10" value="192.168.1.10" spellcheck="false" />
+              <span class="slash">/</span>
+              <div class="cidr-input"><input id="v4Cidr" type="text" placeholder="24" value="24" spellcheck="false" /></div>
+            </div>
+            <div class="hint">
+              CIDR (<code>24</code>), dotted netmask (<code>255.255.255.0</code>), hex mask (<code>0xffffff00</code>),
+              or paste <code>192.168.1.10/24</code> directly.
+            </div>
+          </div>
+          <button type="submit" class="primary">Calculate</button>
+        </div>
+        <div class="form-extras">
+          <label>Network class
+            <select id="v4ClassSel">
+              <option value="any">Any</option>
+              <option value="A">Class A (/8)</option>
+              <option value="B">Class B (/16)</option>
+              <option value="C">Class C (/24)</option>
+            </select>
+          </label>
+          <label>Subnet mask
+            <select id="v4MaskSel"></select>
+          </label>
+        </div>
+        <div class="preset-row">
+          <span style="color:var(--text-dim); font-size:0.85rem;">Quick:</span>
+          <button type="button" class="chip" data-v4="10.0.0.1/8">10.0.0.1/8</button>
+          <button type="button" class="chip" data-v4="172.16.5.4/12">172.16.5.4/12</button>
+          <button type="button" class="chip" data-v4="192.168.1.10/24">192.168.1.10/24</button>
+          <button type="button" class="chip" data-v4="192.168.10.50/26">192.168.10.50/26</button>
+          <button type="button" class="chip" data-v4="203.0.113.5/30">203.0.113.5/30</button>
+        </div>
+        <div id="errorV4" class="error"></div>
+      </form>
+    </div>
+    <div id="resultsV4" class="results"></div>
+    <details class="ref" id="refV4">
+      <summary>IPv4 CIDR reference table — click a row to apply</summary>
+      <div class="ref-body" id="refV4Body"></div>
+    </details>
+  </section>
+
+  <!-- ============ IPv6 ============ -->
+  <section class="panel" id="panel-v6">
+    <div class="card">
+      <form id="formV6" autocomplete="off">
+        <div class="input-row">
+          <div class="field">
+            <label for="v6Ip">IPv6 address / prefix</label>
+            <div class="ip-input">
+              <input id="v6Ip" type="text" placeholder="2001:db8::1" value="2001:db8:abcd:12::1" spellcheck="false" />
+              <span class="slash">/</span>
+              <div class="cidr-input"><input id="v6Cidr" type="text" placeholder="64" value="64" spellcheck="false" /></div>
+            </div>
+            <div class="hint">
+              Compressed (<code>2001:db8::1</code>) or expanded form, or paste <code>2001:db8::1/64</code> directly.
+              IPv4-mapped (<code>::ffff:192.0.2.1</code>) is supported.
+            </div>
+          </div>
+          <button type="submit" class="primary">Calculate</button>
+        </div>
+        <div class="preset-row">
+          <span style="color:var(--text-dim); font-size:0.85rem;">Quick:</span>
+          <button type="button" class="chip" data-v6="2001:db8:abcd:12::1/64">2001:db8:abcd:12::1/64</button>
+          <button type="button" class="chip" data-v6="fe80::1/10">fe80::1/10</button>
+          <button type="button" class="chip" data-v6="fc00::1/7">fc00::1/7</button>
+          <button type="button" class="chip" data-v6="::ffff:192.0.2.1/96">::ffff:192.0.2.1/96</button>
+          <button type="button" class="chip" data-v6="2001:db8::/48">2001:db8::/48</button>
+        </div>
+        <div id="errorV6" class="error"></div>
+      </form>
+    </div>
+    <div id="resultsV6" class="results"></div>
+    <details class="ref" id="refV6">
+      <summary>IPv6 prefix reference — click a row to apply</summary>
+      <div class="ref-body" id="refV6Body"></div>
+    </details>
+  </section>
+
+  <!-- ============ Batch ============ -->
+  <section class="panel" id="panel-batch">
+    <div class="card">
+      <div class="field">
+        <label for="batchInput">Networks (one per line) — IPv4 or IPv6</label>
+        <textarea id="batchInput" class="batch-input" spellcheck="false">10.0.0.0/8
+172.16.0.0/12
+192.168.1.0/24
+192.168.10.0/26
+2001:db8::/32
+2001:db8:abcd::/48
+fe80::/10</textarea>
+        <div class="hint">Mixed IPv4/IPv6 supported. Comments after <code>#</code> are ignored.</div>
+      </div>
+      <div class="controls" style="margin-top:1rem;">
+        <button id="batchRun" class="primary" type="button" style="height:42px; padding:0 1.25rem;">Calculate batch</button>
+        <button id="batchExportCsv" class="secondary" type="button">Export CSV</button>
+      </div>
+      <div id="errorBatch" class="error"></div>
+    </div>
+    <div id="resultsBatch" style="margin-top:1.5rem;"></div>
+  </section>
 </main>
 
 <footer>
@@ -427,16 +513,17 @@
 
 <script>
 (() => {
-  // ---------- Theme ----------
+  // ============================================================
+  //                    Theme + UI plumbing
+  // ============================================================
+  const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
   const iconMoon = document.getElementById('iconMoon');
-  const iconSun = document.getElementById('iconSun');
-  const root = document.documentElement;
+  const iconSun  = document.getElementById('iconSun');
 
   const saved = localStorage.getItem('ipcalc-theme');
   if (saved) root.setAttribute('data-theme', saved);
   syncIcons();
-
   themeToggle.addEventListener('click', () => {
     const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
@@ -449,7 +536,17 @@
     iconSun.style.display  = dark ? 'none' : '';
   }
 
-  // ---------- Toast ----------
+  // tabs
+  document.querySelectorAll('.tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // toast
   const toastEl = document.getElementById('toast');
   let toastTimer;
   function toast(msg) {
@@ -459,190 +556,9 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1400);
   }
 
-  // ---------- IP math ----------
-  function parseIPv4(str) {
-    const parts = str.trim().split('.');
-    if (parts.length !== 4) throw new Error('IP must have 4 octets');
-    let n = 0;
-    for (const p of parts) {
-      if (!/^\d+$/.test(p)) throw new Error('Octets must be numbers');
-      const v = parseInt(p, 10);
-      if (v < 0 || v > 255) throw new Error('Octets must be 0-255');
-      n = (n * 256) + v;
-    }
-    return n >>> 0;
-  }
-  function ipToStr(n) {
-    return [(n>>>24)&255, (n>>>16)&255, (n>>>8)&255, n&255].join('.');
-  }
-  function ipToBin(n) {
-    let s = (n >>> 0).toString(2).padStart(32, '0');
-    return s.match(/.{8}/g).join('.');
-  }
-  function cidrToMask(c) {
-    if (c === 0) return 0;
-    return (0xFFFFFFFF << (32 - c)) >>> 0;
-  }
-  function maskToCidr(m) {
-    let c = 0, bits = m;
-    let seenZero = false;
-    for (let i = 31; i >= 0; i--) {
-      const bit = (bits >>> i) & 1;
-      if (bit === 1) {
-        if (seenZero) throw new Error('Invalid (non-contiguous) netmask');
-        c++;
-      } else {
-        seenZero = true;
-      }
-    }
-    return c;
-  }
-  function classifyIP(n) {
-    const a = (n >>> 24) & 0xFF;
-    if (a === 10) return { type: 'private', label: 'Private (RFC1918)' };
-    if (a === 172 && ((n >>> 16) & 0xFF) >= 16 && ((n >>> 16) & 0xFF) <= 31) return { type: 'private', label: 'Private (RFC1918)' };
-    if (a === 192 && ((n >>> 16) & 0xFF) === 168) return { type: 'private', label: 'Private (RFC1918)' };
-    if (a === 127) return { type: 'special', label: 'Loopback' };
-    if (a === 169 && ((n >>> 16) & 0xFF) === 254) return { type: 'special', label: 'Link-local (APIPA)' };
-    if (a >= 224 && a <= 239) return { type: 'special', label: 'Multicast' };
-    if (a >= 240) return { type: 'special', label: 'Reserved' };
-    if (a === 0) return { type: 'special', label: 'Reserved (this network)' };
-    return { type: 'public', label: 'Public' };
-  }
-  function ipClass(n) {
-    const a = (n >>> 24) & 0xFF;
-    if (a < 128) return 'A';
-    if (a < 192) return 'B';
-    if (a < 224) return 'C';
-    if (a < 240) return 'D (multicast)';
-    return 'E (reserved)';
-  }
-
-  function calc(ipStr, cidrStr) {
-    const ipNum = parseIPv4(ipStr);
-    let cidr;
-    if (cidrStr.includes('.')) {
-      // dotted netmask
-      cidr = maskToCidr(parseIPv4(cidrStr));
-    } else {
-      if (!/^\d+$/.test(cidrStr)) throw new Error('CIDR must be a number 0-32');
-      cidr = parseInt(cidrStr, 10);
-      if (cidr < 0 || cidr > 32) throw new Error('CIDR must be 0-32');
-    }
-
-    const mask = cidrToMask(cidr);
-    const wildcard = (~mask) >>> 0;
-    const network = (ipNum & mask) >>> 0;
-    const broadcast = (network | wildcard) >>> 0;
-    const total = cidr === 32 ? 1 : (cidr === 31 ? 2 : Math.pow(2, 32 - cidr));
-    const usable = cidr >= 31 ? total : total - 2;
-    const firstHost = cidr >= 31 ? network : (network + 1) >>> 0;
-    const lastHost  = cidr >= 31 ? broadcast : (broadcast - 1) >>> 0;
-
-    return {
-      ipNum, cidr, mask, wildcard, network, broadcast,
-      total, usable, firstHost, lastHost,
-    };
-  }
-
-  function binarySplit(n, cidr) {
-    const bin = (n >>> 0).toString(2).padStart(32, '0');
-    let html = '';
-    for (let i = 0; i < 32; i++) {
-      if (i > 0 && i % 8 === 0) html += '<span class="bin-dot">.</span>';
-      const cls = i < cidr ? 'bin-net' : 'bin-host';
-      html += `<span class="${cls}">${bin[i]}</span>`;
-    }
-    return html;
-  }
-
-  // ---------- Render ----------
-  const resultsEl = document.getElementById('results');
-  const errorEl = document.getElementById('error');
-
-  function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.classList.add('show');
-    resultsEl.innerHTML = '';
-  }
-  function clearError() { errorEl.classList.remove('show'); }
-
-  function copyBtn(text) {
-    return `<button class="copy-btn" data-copy="${text}" title="Copy">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-      </svg>
-    </button>`;
-  }
-  function row(k, v, copy = true) {
-    return `<div class="kv">
-      <div class="k">${k}</div>
-      <div class="v">${v}</div>
-      ${copy ? copyBtn(typeof v === 'string' ? v.replace(/<[^>]*>/g, '') : v) : '<span></span>'}
-    </div>`;
-  }
-
-  function render(r, ipStr) {
-    const cls = ipClass(r.ipNum);
-    const info = classifyIP(r.ipNum);
-    const hostsLabel = r.cidr === 32 ? '1 (single host)' :
-                       r.cidr === 31 ? '2 (point-to-point)' :
-                       r.usable.toLocaleString() + ' usable';
-
-    resultsEl.innerHTML = `
-      <div class="result-card">
-        <h3>Address</h3>
-        ${row('IP', ipToStr(r.ipNum))}
-        ${row('CIDR', '/' + r.cidr)}
-        ${row('Class', cls)}
-        <div class="kv">
-          <div class="k">Type</div>
-          <div class="v"><span class="badge ${info.type}">${info.label}</span></div>
-          <span></span>
-        </div>
-      </div>
-
-      <div class="result-card">
-        <h3>Network</h3>
-        ${row('Network',   ipToStr(r.network))}
-        ${row('Broadcast', ipToStr(r.broadcast))}
-        ${row('Netmask',   ipToStr(r.mask))}
-        ${row('Wildcard',  ipToStr(r.wildcard))}
-      </div>
-
-      <div class="result-card">
-        <h3>Host range</h3>
-        ${row('First host', ipToStr(r.firstHost))}
-        ${row('Last host',  ipToStr(r.lastHost))}
-        ${row('Total IPs',  r.total.toLocaleString(), false)}
-        ${row('Usable',     hostsLabel, false)}
-      </div>
-
-      <div class="result-card full-row">
-        <h3>Binary breakdown</h3>
-        <div class="kv"><div class="k">IP</div><div class="v binary">${binarySplit(r.ipNum, r.cidr)}</div><span></span></div>
-        <div class="kv"><div class="k">Netmask</div><div class="v binary">${binarySplit(r.mask, r.cidr)}</div><span></span></div>
-        <div class="kv"><div class="k">Network</div><div class="v binary">${binarySplit(r.network, r.cidr)}</div><span></span></div>
-        <div class="kv"><div class="k">Broadcast</div><div class="v binary">${binarySplit(r.broadcast, r.cidr)}</div><span></span></div>
-        <p style="margin: 0.85rem 0 0; font-size:0.8rem; color:var(--text-dim);">
-          <span class="bin-net">■</span> network bits &nbsp; <span class="bin-host">■</span> host bits
-        </p>
-      </div>
-
-      <div class="result-card full-row">
-        <h3>Subdivide network</h3>
-        <div class="split-controls">
-          <label for="splitCidr">Split into /</label>
-          <select id="splitCidr"></select>
-          <label>showing first <span id="splitCount">8</span> subnets</label>
-        </div>
-        <div id="splitTable"></div>
-      </div>
-    `;
-
-    // wire copy buttons
-    resultsEl.querySelectorAll('.copy-btn').forEach(btn => {
+  // copy helper — shared
+  function attachCopyHandlers(scope) {
+    scope.querySelectorAll('.copy-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
         const text = btn.dataset.copy;
         try {
@@ -653,98 +569,1065 @@
         } catch { toast('Copy failed'); }
       });
     });
+  }
+  function copyBtnHTML(text) {
+    const safe = String(text).replace(/"/g, '&quot;');
+    return `<button class="copy-btn" data-copy="${safe}" title="Copy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>`;
+  }
+  function row(k, v, copy = true) {
+    const plain = typeof v === 'string' ? v.replace(/<[^>]*>/g, '') : v;
+    return `<div class="kv">
+      <div class="k">${k}</div>
+      <div class="v">${v}</div>
+      ${copy ? copyBtnHTML(plain) : '<span></span>'}
+    </div>`;
+  }
 
-    // split selector
-    const splitSel = document.getElementById('splitCidr');
+  // ============================================================
+  //                       IPv4 math
+  // ============================================================
+  function parseIPv4(str) {
+    const s = String(str).trim();
+    if (!s) throw new Error('Empty IPv4 address');
+    const parts = s.split('.');
+    if (parts.length !== 4) throw new Error('IPv4 must have 4 octets');
+    let n = 0;
+    for (const p of parts) {
+      if (!/^\d+$/.test(p)) throw new Error('Octets must be numeric');
+      const v = parseInt(p, 10);
+      if (v < 0 || v > 255) throw new Error('Octet out of range (0-255): ' + p);
+      n = (n * 256) + v;
+    }
+    return n >>> 0;
+  }
+  const v4ToStr = n => [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255].join('.');
+  const v4ToHex = n => '0x' + (n >>> 0).toString(16).padStart(8, '0');
+  const v4ToHexDotted = n => [(n>>>24)&255,(n>>>16)&255,(n>>>8)&255,n&255]
+        .map(x => x.toString(16).padStart(2,'0')).join('.').toUpperCase();
+  const v4ToDec = n => (n >>> 0).toString(10);
+  function v4ToBin(n) {
+    return (n >>> 0).toString(2).padStart(32, '0').match(/.{8}/g).join('.');
+  }
+  function cidrToMask(c) { return c === 0 ? 0 : ((0xFFFFFFFF << (32 - c)) >>> 0); }
+  function maskToCidr(m) {
+    let c = 0, seenZero = false;
+    for (let i = 31; i >= 0; i--) {
+      const bit = (m >>> i) & 1;
+      if (bit) { if (seenZero) throw new Error('Non-contiguous netmask'); c++; }
+      else seenZero = true;
+    }
+    return c;
+  }
+  function classifyV4(n) {
+    const a = (n >>> 24) & 0xFF;
+    if (a === 10) return { type:'private', label:'Private (RFC1918)' };
+    if (a === 172 && ((n>>>16)&0xFF) >= 16 && ((n>>>16)&0xFF) <= 31) return { type:'private', label:'Private (RFC1918)' };
+    if (a === 192 && ((n>>>16)&0xFF) === 168) return { type:'private', label:'Private (RFC1918)' };
+    if (a === 127) return { type:'special', label:'Loopback' };
+    if (a === 169 && ((n>>>16)&0xFF) === 254) return { type:'special', label:'Link-local (APIPA)' };
+    if (a >= 224 && a <= 239) return { type:'special', label:'Multicast' };
+    if (a >= 240) return { type:'special', label:'Reserved (Class E)' };
+    if (a === 0) return { type:'special', label:'This network' };
+    return { type:'public', label:'Public' };
+  }
+  function v4Class(n) {
+    const a = (n >>> 24) & 0xFF;
+    if (a < 128) return { name:'A', defaultMask: 8 };
+    if (a < 192) return { name:'B', defaultMask: 16 };
+    if (a < 224) return { name:'C', defaultMask: 24 };
+    if (a < 240) return { name:'D (multicast)', defaultMask: null };
+    return { name:'E (reserved)', defaultMask: null };
+  }
+  function parseV4Mask(str) {
+    const s = String(str).trim();
+    if (!s) throw new Error('Empty mask');
+    if (/^0x[0-9a-f]+$/i.test(s)) {
+      const v = parseInt(s, 16) >>> 0;
+      return { cidr: maskToCidr(v), source: 'hex' };
+    }
+    if (s.includes('.')) return { cidr: maskToCidr(parseIPv4(s)), source: 'dotted' };
+    if (!/^\d+$/.test(s)) throw new Error('Mask must be numeric, dotted, or 0x-hex');
+    const c = parseInt(s, 10);
+    if (c < 0 || c > 32) throw new Error('CIDR must be 0-32');
+    return { cidr: c, source: 'cidr' };
+  }
+  function calcV4(ipStr, maskStr) {
+    const ipNum = parseIPv4(ipStr);
+    const { cidr } = parseV4Mask(maskStr);
+    const mask = cidrToMask(cidr);
+    const wildcard = (~mask) >>> 0;
+    const network = (ipNum & mask) >>> 0;
+    const broadcast = (network | wildcard) >>> 0;
+    const total = cidr === 32 ? 1 : (cidr === 31 ? 2 : Math.pow(2, 32 - cidr));
+    const usable = cidr >= 31 ? total : total - 2;
+    const firstHost = cidr >= 31 ? network   : (network + 1) >>> 0;
+    const lastHost  = cidr >= 31 ? broadcast : (broadcast - 1) >>> 0;
+    return { ipNum, cidr, mask, wildcard, network, broadcast, total, usable, firstHost, lastHost };
+  }
+
+  function v4BinarySplit(n, cidr) {
+    const bin = (n >>> 0).toString(2).padStart(32, '0');
+    let html = '';
+    for (let i = 0; i < 32; i++) {
+      if (i > 0 && i % 8 === 0) html += '<span class="bin-dot">.</span>';
+      const cls = i < cidr ? 'bin-net' : 'bin-host';
+      html += `<span class="${cls}">${bin[i]}</span>`;
+    }
+    return html;
+  }
+  function v4InAddrArpa(n) {
+    return [n&255,(n>>>8)&255,(n>>>16)&255,(n>>>24)&255].join('.') + '.in-addr.arpa';
+  }
+
+  // ============================================================
+  //                       IPv6 math (BigInt)
+  // ============================================================
+  const M128 = (1n << 128n) - 1n;
+
+  function parseIPv6(str) {
+    let s = String(str).trim().toLowerCase();
+    if (!s) throw new Error('Empty IPv6 address');
+    // strip zone id
+    const pct = s.indexOf('%');
+    if (pct !== -1) s = s.slice(0, pct);
+    // embedded IPv4
+    const lastColon = s.lastIndexOf(':');
+    if (s.includes('.')) {
+      const tail = s.slice(lastColon + 1);
+      if (!/^\d+\.\d+\.\d+\.\d+$/.test(tail)) throw new Error('Invalid embedded IPv4 in IPv6');
+      const v4 = parseIPv4(tail);
+      const hi = ((v4 >>> 16) & 0xFFFF).toString(16);
+      const lo = (v4 & 0xFFFF).toString(16);
+      s = s.slice(0, lastColon + 1) + hi + ':' + lo;
+    }
+    // expand ::
+    let parts;
+    if (s.includes('::')) {
+      const halves = s.split('::');
+      if (halves.length !== 2) throw new Error('Multiple "::" not allowed');
+      const left  = halves[0] === '' ? [] : halves[0].split(':');
+      const right = halves[1] === '' ? [] : halves[1].split(':');
+      const fill = 8 - left.length - right.length;
+      if (fill < 0) throw new Error('Too many groups in IPv6 address');
+      parts = [...left, ...Array(fill).fill('0'), ...right];
+    } else {
+      parts = s.split(':');
+      if (parts.length !== 8) throw new Error('IPv6 must have 8 groups (or use "::")');
+    }
+    let n = 0n;
+    for (const p of parts) {
+      if (!/^[0-9a-f]{1,4}$/.test(p)) throw new Error('Invalid IPv6 group: "' + p + '"');
+      n = (n << 16n) | BigInt(parseInt(p, 16));
+    }
+    return n;
+  }
+
+  function v6Expanded(n) {
+    const groups = [];
+    for (let i = 7; i >= 0; i--) {
+      const g = Number((n >> (BigInt(i) * 16n)) & 0xFFFFn);
+      groups.push(g.toString(16).padStart(4, '0'));
+    }
+    return groups.join(':');
+  }
+  // RFC 5952 compressed form
+  function v6Compressed(n) {
+    const groups = [];
+    for (let i = 7; i >= 0; i--) {
+      groups.push(Number((n >> (BigInt(i) * 16n)) & 0xFFFFn).toString(16));
+    }
+    // find longest run of zero groups, length >= 2
+    let bestStart = -1, bestLen = 0;
+    let curStart = -1, curLen = 0;
+    for (let i = 0; i < 8; i++) {
+      if (groups[i] === '0') {
+        if (curStart === -1) curStart = i;
+        curLen++;
+        if (curLen > bestLen) { bestLen = curLen; bestStart = curStart; }
+      } else { curStart = -1; curLen = 0; }
+    }
+    if (bestLen < 2) return groups.join(':');
+    const left  = groups.slice(0, bestStart).join(':');
+    const right = groups.slice(bestStart + bestLen).join(':');
+    return left + '::' + right;
+  }
+  function v6V4Mapped(n) {
+    // Render last 32 bits as IPv4 — useful for v4-mapped/compatible addresses
+    const v4 = Number(n & 0xFFFFFFFFn);
+    const head = v6Compressed(n & ~0xFFFFFFFFn).replace(/(::)?0?$/, '');
+    // simpler: always show as <compressed-prefix>:<dotted-quad>
+    const groups = [];
+    for (let i = 7; i >= 2; i--) {
+      groups.push(Number((n >> (BigInt(i) * 16n)) & 0xFFFFn).toString(16));
+    }
+    // collapse leading zeros
+    let bestStart = -1, bestLen = 0, curStart = -1, curLen = 0;
+    for (let i = 0; i < groups.length; i++) {
+      if (groups[i] === '0') {
+        if (curStart === -1) curStart = i;
+        curLen++;
+        if (curLen > bestLen) { bestLen = curLen; bestStart = curStart; }
+      } else { curStart = -1; curLen = 0; }
+    }
+    let prefix;
+    if (bestLen >= 2) {
+      const L = groups.slice(0, bestStart).join(':');
+      const R = groups.slice(bestStart + bestLen).join(':');
+      prefix = L + '::' + R;
+    } else prefix = groups.join(':');
+    const dotted = [(v4>>>24)&255,(v4>>>16)&255,(v4>>>8)&255,v4&255].join('.');
+    return prefix + (prefix.endsWith(':') ? '' : ':') + dotted;
+  }
+  function v6Reverse(n) {
+    // .ip6.arpa nibble-reversed
+    let hex = n.toString(16).padStart(32, '0');
+    return hex.split('').reverse().join('.') + '.ip6.arpa';
+  }
+  function v6Mask(prefix) {
+    if (prefix < 0 || prefix > 128) throw new Error('IPv6 prefix must be 0-128');
+    if (prefix === 0) return 0n;
+    return (M128 << BigInt(128 - prefix)) & M128;
+  }
+  function classifyV6(n) {
+    // simplified scope classification
+    const top = Number(n >> 112n) & 0xFFFF;
+    const top8 = top >> 8;
+    if (n === 0n) return { type:'special', label:'Unspecified (::)' };
+    if (n === 1n) return { type:'special', label:'Loopback (::1)' };
+    if ((top & 0xFFC0) === 0xFE80) return { type:'special', label:'Link-local (fe80::/10)' };
+    if ((top8 & 0xFE) === 0xFC) return { type:'private', label:'Unique local (fc00::/7)' };
+    if (top8 === 0xFF) return { type:'special', label:'Multicast (ff00::/8)' };
+    if ((n >> 32n) === 0xFFFFn) return { type:'special', label:'IPv4-mapped (::ffff:0:0/96)' };
+    if ((n >> 96n) === 0n && n !== 0n && n !== 1n) return { type:'special', label:'IPv4-compatible (deprecated)' };
+    if ((n >> 96n) === BigInt('0x20010000')) return { type:'public', label:'Teredo (2001::/32)' };
+    if ((n >> 112n) === 0x2002n) return { type:'public', label:'6to4 (2002::/16)' };
+    if ((n >> 96n) === BigInt('0x20010db8')) return { type:'special', label:'Documentation (2001:db8::/32)' };
+    return { type:'public', label:'Global unicast' };
+  }
+  function calcV6(ipStr, prefixStr) {
+    const ip = parseIPv6(ipStr);
+    if (!/^\d+$/.test(prefixStr)) throw new Error('IPv6 prefix must be a number 0-128');
+    const prefix = parseInt(prefixStr, 10);
+    const mask = v6Mask(prefix);
+    const network   = ip & mask;
+    const broadcast = network | ((~mask) & M128);  // last address in prefix
+    const total = prefix === 128 ? 1n : (1n << BigInt(128 - prefix));
+    return { ip, prefix, mask, network, broadcast, total };
+  }
+
+  // ============================================================
+  //                  DNS over HTTPS (Cloudflare)
+  // ============================================================
+  async function doh(name, type) {
+    const url = `https://cloudflare-dns.com/dns-query?name=${encodeURIComponent(name)}&type=${type}`;
+    const res = await fetch(url, { headers: { accept: 'application/dns-json' } });
+    if (!res.ok) throw new Error('DNS HTTP ' + res.status);
+    const j = await res.json();
+    const answers = (j.Answer || []).map(a => a.data);
+    return answers;
+  }
+
+  // ============================================================
+  //                   IPv4 — render
+  // ============================================================
+  const formV4 = document.getElementById('formV4');
+  const v4IpEl = document.getElementById('v4Ip');
+  const v4CidrEl = document.getElementById('v4Cidr');
+  const errV4 = document.getElementById('errorV4');
+  const resV4 = document.getElementById('resultsV4');
+
+  formV4.addEventListener('submit', e => { e.preventDefault(); runV4(); });
+
+  function runV4() {
+    let ip = v4IpEl.value.trim();
+    let mask = v4CidrEl.value.trim();
+    if (ip.includes('/')) { const [a,b] = ip.split('/'); ip = a.trim(); mask = b.trim(); v4IpEl.value = ip; v4CidrEl.value = mask; }
+    try {
+      errV4.classList.remove('show');
+      const r = calcV4(ip, mask);
+      renderV4(r);
+    } catch (err) {
+      errV4.textContent = err.message; errV4.classList.add('show'); resV4.innerHTML = '';
+    }
+  }
+
+  function renderV4(r) {
+    const cls = v4Class(r.ipNum);
+    const info = classifyV4(r.ipNum);
+    const hosts = r.cidr === 32 ? '1 (single host)' :
+                  r.cidr === 31 ? '2 (point-to-point)' :
+                  r.usable.toLocaleString() + ' usable';
+    resV4.innerHTML = `
+      <div class="result-card">
+        <h3>Address (multiple formats)</h3>
+        ${row('Decimal',     v4ToStr(r.ipNum))}
+        ${row('Hex (full)',  v4ToHex(r.ipNum))}
+        ${row('Hex dotted',  v4ToHexDotted(r.ipNum))}
+        ${row('Integer',     v4ToDec(r.ipNum))}
+        ${row('CIDR',        '/' + r.cidr)}
+        ${row('Class',       cls.name + (cls.defaultMask ? ` (default /${cls.defaultMask})` : ''))}
+        <div class="kv"><div class="k">Type</div><div class="v"><span class="badge ${info.type}">${info.label}</span></div><span></span></div>
+      </div>
+
+      <div class="result-card">
+        <h3>Netmask formats</h3>
+        ${row('Dotted',  v4ToStr(r.mask))}
+        ${row('Hex',     v4ToHex(r.mask))}
+        ${row('CIDR',    '/' + r.cidr)}
+        ${row('Wildcard',v4ToStr(r.wildcard))}
+        ${row('Wildcard hex', v4ToHex(r.wildcard))}
+      </div>
+
+      <div class="result-card">
+        <h3>Network</h3>
+        ${row('Network',     v4ToStr(r.network))}
+        ${row('Network hex', v4ToHex(r.network))}
+        ${row('Broadcast',   v4ToStr(r.broadcast))}
+        ${row('Broadcast hex', v4ToHex(r.broadcast))}
+        ${row('Range',       v4ToStr(r.network) + ' – ' + v4ToStr(r.broadcast))}
+      </div>
+
+      <div class="result-card">
+        <h3>Host range</h3>
+        ${row('First host', v4ToStr(r.firstHost))}
+        ${row('Last host',  v4ToStr(r.lastHost))}
+        ${row('Total IPs',  r.total.toLocaleString(), false)}
+        ${row('Usable',     hosts, false)}
+        ${row('Reverse DNS', v4InAddrArpa(r.network))}
+      </div>
+
+      <div class="result-card full-row">
+        <h3>Bitmaps</h3>
+        <div class="kv"><div class="k">IP</div><div class="v binary">${v4BinarySplit(r.ipNum, r.cidr)}</div><span></span></div>
+        <div class="kv"><div class="k">Netmask</div><div class="v binary">${v4BinarySplit(r.mask, r.cidr)}</div><span></span></div>
+        <div class="kv"><div class="k">Network</div><div class="v binary">${v4BinarySplit(r.network, r.cidr)}</div><span></span></div>
+        <div class="kv"><div class="k">Broadcast</div><div class="v binary">${v4BinarySplit(r.broadcast, r.cidr)}</div><span></span></div>
+        <div class="kv"><div class="k">Wildcard</div><div class="v binary">${v4BinarySplit(r.wildcard, r.cidr)}</div><span></span></div>
+        <p style="margin: 0.85rem 0 0; font-size:0.8rem; color:var(--text-dim);">
+          <span class="bin-net">■</span> network bits &nbsp; <span class="bin-host">■</span> host bits
+        </p>
+      </div>
+
+      <div class="result-card full-row">
+        <h3>Subdivide network (split)</h3>
+        <div class="controls">
+          <label>Split into /</label>
+          <select id="v4SplitCidr"></select>
+          <label>Show</label>
+          <input id="v4SplitLimit" type="number" min="1" max="1024" value="32" style="width:90px;" />
+          <label>subnets</label>
+          <label style="margin-left:0.75rem;">
+            <input id="v4SplitRecurse" type="checkbox" /> recursive (one extra level)
+          </label>
+        </div>
+        <div id="v4SplitTable"></div>
+      </div>
+
+      <div class="result-card full-row">
+        <h3>Adjacent networks</h3>
+        <div class="controls">
+          <label>Show</label>
+          <input id="v4NeighborN" type="number" min="1" max="64" value="4" style="width:80px;" />
+          <label>extra networks (same prefix length)</label>
+        </div>
+        <div id="v4NeighborTable"></div>
+      </div>
+
+      <div class="result-card full-row">
+        <h3>DNS lookup</h3>
+        <div class="controls">
+          <input id="v4DnsName" type="text" placeholder="example.com (forward A)" style="flex:1; min-width:200px;" />
+          <button class="secondary" id="v4DnsForward" type="button">A lookup</button>
+          <button class="secondary" id="v4DnsReverse" type="button">Reverse PTR for ${v4ToStr(r.ipNum)}</button>
+        </div>
+        <div id="v4DnsResult" class="dns-status">via DNS-over-HTTPS (Cloudflare 1.1.1.1)</div>
+      </div>
+    `;
+    attachCopyHandlers(resV4);
+
+    // wire split
+    const splitSel = document.getElementById('v4SplitCidr');
     for (let c = r.cidr; c <= 32; c++) {
       const opt = document.createElement('option');
       opt.value = c;
       const subnets = Math.pow(2, c - r.cidr);
-      opt.textContent = `/${c}  (${subnets.toLocaleString()} subnet${subnets === 1 ? '' : 's'})`;
+      opt.textContent = `/${c}  (${subnets.toLocaleString()} subnet${subnets===1?'':'s'})`;
       if (c === Math.min(r.cidr + 2, 32)) opt.selected = true;
       splitSel.appendChild(opt);
     }
-    splitSel.addEventListener('change', () => renderSplit(r, parseInt(splitSel.value, 10)));
-    renderSplit(r, parseInt(splitSel.value, 10));
+    const limitEl = document.getElementById('v4SplitLimit');
+    const recurseEl = document.getElementById('v4SplitRecurse');
+    const drawSplit = () => renderV4Split(r, parseInt(splitSel.value,10), parseInt(limitEl.value,10) || 32, recurseEl.checked);
+    splitSel.addEventListener('change', drawSplit);
+    limitEl.addEventListener('input', drawSplit);
+    recurseEl.addEventListener('change', drawSplit);
+    drawSplit();
+
+    // neighbors
+    const nEl = document.getElementById('v4NeighborN');
+    const drawNeighbors = () => renderV4Neighbors(r, parseInt(nEl.value, 10) || 4);
+    nEl.addEventListener('input', drawNeighbors);
+    drawNeighbors();
+
+    // DNS
+    document.getElementById('v4DnsForward').addEventListener('click', () => v4DnsForward());
+    document.getElementById('v4DnsReverse').addEventListener('click', () => v4DnsReverse(r.ipNum));
   }
 
-  function renderSplit(r, newCidr) {
-    const tableEl = document.getElementById('splitTable');
-    const countEl = document.getElementById('splitCount');
+  function renderV4Split(r, newCidr, limit, recursive) {
+    const tableEl = document.getElementById('v4SplitTable');
     const blockSize = newCidr === 32 ? 1 : Math.pow(2, 32 - newCidr);
     const totalSubnets = Math.pow(2, newCidr - r.cidr);
-    const limit = Math.min(totalSubnets, 32);
-    countEl.textContent = limit.toLocaleString();
-
+    const cap = Math.min(totalSubnets, Math.max(1, limit));
     let rows = '';
-    for (let i = 0; i < limit; i++) {
+    for (let i = 0; i < cap; i++) {
       const net = (r.network + i * blockSize) >>> 0;
       const bcast = (net + blockSize - 1) >>> 0;
       const first = newCidr >= 31 ? net : (net + 1) >>> 0;
       const last  = newCidr >= 31 ? bcast : (bcast - 1) >>> 0;
+      let extra = '';
+      if (recursive && newCidr < 32) {
+        const childCidr = Math.min(newCidr + 1, 32);
+        const childSize = Math.pow(2, 32 - childCidr);
+        const c1Net = net, c1B = (c1Net + childSize - 1) >>> 0;
+        const c2Net = (net + childSize) >>> 0, c2B = (c2Net + childSize - 1) >>> 0;
+        extra = `<tr><td></td><td colspan="3" style="color:var(--text-dim); padding-left:2rem;">
+          ↳ /${childCidr}: ${v4ToStr(c1Net)} – ${v4ToStr(c1B)} &nbsp;|&nbsp; ${v4ToStr(c2Net)} – ${v4ToStr(c2B)}
+        </td></tr>`;
+      }
       rows += `<tr>
         <td>${i}</td>
-        <td>${ipToStr(net)}/${newCidr}</td>
-        <td>${ipToStr(first)} – ${ipToStr(last)}</td>
-        <td>${ipToStr(bcast)}</td>
+        <td>${v4ToStr(net)}/${newCidr}</td>
+        <td>${v4ToStr(first)} – ${v4ToStr(last)}</td>
+        <td>${v4ToStr(bcast)}</td>
+      </tr>${extra}`;
+    }
+    const note = totalSubnets > cap
+      ? `<p style="margin:0.75rem 0 0; font-size:0.82rem; color:var(--text-dim);">Showing first ${cap.toLocaleString()} of ${totalSubnets.toLocaleString()} subnets.</p>`
+      : '';
+    tableEl.innerHTML = `<div style="overflow-x:auto;">
+      <table class="subnets-table">
+        <thead><tr><th>#</th><th>Subnet</th><th>Host range</th><th>Broadcast</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>${note}`;
+  }
+
+  function renderV4Neighbors(r, n) {
+    const blockSize = r.cidr === 32 ? 1 : Math.pow(2, 32 - r.cidr);
+    let rows = '';
+    for (let i = 1; i <= n; i++) {
+      const offsetUp = (r.network + i * blockSize) >>> 0;
+      const offsetDown = (r.network - i * blockSize) >>> 0;
+      // overflow check: if offsetUp wrapped below network, skip up
+      if (r.network + i * blockSize <= 0xFFFFFFFF) {
+        const bc = (offsetUp + blockSize - 1) >>> 0;
+        if (offsetUp + blockSize - 1 <= 0xFFFFFFFF) {
+          rows += `<tr><td>+${i}</td><td>${v4ToStr(offsetUp)}/${r.cidr}</td><td>${v4ToStr(offsetUp)} – ${v4ToStr(bc)}</td></tr>`;
+        }
+      }
+      if (r.network - i * blockSize >= 0) {
+        const bc = (offsetDown + blockSize - 1) >>> 0;
+        rows = `<tr><td>−${i}</td><td>${v4ToStr(offsetDown)}/${r.cidr}</td><td>${v4ToStr(offsetDown)} – ${v4ToStr(bc)}</td></tr>` + rows;
+      }
+    }
+    document.getElementById('v4NeighborTable').innerHTML = `<div style="overflow-x:auto;">
+      <table class="subnets-table">
+        <thead><tr><th>Δ</th><th>Network</th><th>Range</th></tr></thead>
+        <tbody>${rows || '<tr><td colspan="3" style="color:var(--text-dim);">No adjacent networks within IPv4 space.</td></tr>'}</tbody>
+      </table></div>`;
+  }
+
+  async function v4DnsForward() {
+    const out = document.getElementById('v4DnsResult');
+    const name = document.getElementById('v4DnsName').value.trim();
+    if (!name) { out.innerHTML = '<span class="err">Enter a hostname.</span>'; return; }
+    out.textContent = 'Looking up A records for ' + name + '…';
+    try {
+      const ans = await doh(name, 'A');
+      out.innerHTML = ans.length
+        ? '<span class="ok">A records:</span> ' + ans.join(', ')
+        : '<span class="err">No A records found.</span>';
+    } catch (e) { out.innerHTML = '<span class="err">DNS error: ' + e.message + '</span>'; }
+  }
+  async function v4DnsReverse(ipNum) {
+    const out = document.getElementById('v4DnsResult');
+    const name = v4InAddrArpa(ipNum);
+    out.textContent = 'Reverse lookup for ' + v4ToStr(ipNum) + ' (' + name + ')…';
+    try {
+      const ans = await doh(name, 'PTR');
+      out.innerHTML = ans.length
+        ? '<span class="ok">PTR:</span> ' + ans.join(', ')
+        : '<span class="err">No PTR records found.</span>';
+    } catch (e) { out.innerHTML = '<span class="err">DNS error: ' + e.message + '</span>'; }
+  }
+
+  // chips
+  document.querySelectorAll('[data-v4]').forEach(c => c.addEventListener('click', () => {
+    const [ip, m] = c.dataset.v4.split('/'); v4IpEl.value = ip; v4CidrEl.value = m; runV4();
+  }));
+
+  // ============================================================
+  //                   IPv6 — render
+  // ============================================================
+  const formV6 = document.getElementById('formV6');
+  const v6IpEl = document.getElementById('v6Ip');
+  const v6CidrEl = document.getElementById('v6Cidr');
+  const errV6 = document.getElementById('errorV6');
+  const resV6 = document.getElementById('resultsV6');
+
+  formV6.addEventListener('submit', e => { e.preventDefault(); runV6(); });
+
+  function runV6() {
+    let ip = v6IpEl.value.trim();
+    let p = v6CidrEl.value.trim();
+    if (ip.includes('/')) { const [a,b] = ip.split('/'); ip = a.trim(); p = b.trim(); v6IpEl.value = ip; v6CidrEl.value = p; }
+    try {
+      errV6.classList.remove('show');
+      const r = calcV6(ip, p);
+      renderV6(r);
+    } catch (err) {
+      errV6.textContent = err.message; errV6.classList.add('show'); resV6.innerHTML = '';
+    }
+  }
+
+  function renderV6(r) {
+    const info = classifyV6(r.ip);
+    const totalStr = r.total.toLocaleString();
+    resV6.innerHTML = `
+      <div class="result-card">
+        <h3>Address</h3>
+        ${row('Compressed', v6Compressed(r.ip))}
+        ${row('Expanded',   v6Expanded(r.ip))}
+        ${row('Prefix',     '/' + r.prefix)}
+        ${row('IPv4-mapped form', v6V4Mapped(r.ip))}
+        <div class="kv"><div class="k">Type</div><div class="v"><span class="badge ${info.type}">${info.label}</span></div><span></span></div>
+      </div>
+
+      <div class="result-card">
+        <h3>Netmask</h3>
+        ${row('Compressed',  v6Compressed(r.mask))}
+        ${row('Expanded',    v6Expanded(r.mask))}
+        ${row('Prefix bits', '/' + r.prefix)}
+      </div>
+
+      <div class="result-card">
+        <h3>Network</h3>
+        ${row('Network',          v6Compressed(r.network))}
+        ${row('Network expanded', v6Expanded(r.network))}
+        ${row('Last address',     v6Compressed(r.broadcast))}
+        ${row('Last expanded',    v6Expanded(r.broadcast))}
+        ${row('Network range',    v6Compressed(r.network) + ' – ' + v6Compressed(r.broadcast), false)}
+      </div>
+
+      <div class="result-card">
+        <h3>Counts & reverse DNS</h3>
+        ${row('Total addresses', totalStr, false)}
+        ${row('Reverse PTR (network)', v6Reverse(r.network))}
+        ${row('Reverse PTR (this IP)', v6Reverse(r.ip))}
+      </div>
+
+      <div class="result-card full-row">
+        <h3>Subdivide network (split)</h3>
+        <div class="controls">
+          <label>Split into /</label>
+          <select id="v6SplitCidr"></select>
+          <label>Show</label>
+          <input id="v6SplitLimit" type="number" min="1" max="1024" value="16" style="width:90px;" />
+          <label>subnets</label>
+          <label style="margin-left:0.75rem;">
+            <input id="v6SplitRecurse" type="checkbox" /> recursive (one extra level)
+          </label>
+        </div>
+        <div id="v6SplitTable"></div>
+      </div>
+
+      <div class="result-card full-row">
+        <h3>DNS lookup</h3>
+        <div class="controls">
+          <input id="v6DnsName" type="text" placeholder="example.com (forward AAAA)" style="flex:1; min-width:200px;" />
+          <button class="secondary" id="v6DnsForward" type="button">AAAA lookup</button>
+          <button class="secondary" id="v6DnsReverse" type="button">Reverse PTR for ${v6Compressed(r.ip)}</button>
+        </div>
+        <div id="v6DnsResult" class="dns-status">via DNS-over-HTTPS (Cloudflare 1.1.1.1)</div>
+      </div>
+    `;
+    attachCopyHandlers(resV6);
+
+    const splitSel = document.getElementById('v6SplitCidr');
+    const maxJump = Math.min(r.prefix + 16, 128); // sensible default, but allow up to 128
+    for (let c = r.prefix; c <= 128; c++) {
+      const opt = document.createElement('option');
+      opt.value = c;
+      const subnetsBig = c === r.prefix ? 1n : (1n << BigInt(c - r.prefix));
+      const label = subnetsBig <= 100000n ? subnetsBig.toLocaleString() : '2^' + (c - r.prefix);
+      opt.textContent = `/${c}  (${label} subnet${subnetsBig===1n?'':'s'})`;
+      if (c === Math.min(r.prefix + 4, 128)) opt.selected = true;
+      splitSel.appendChild(opt);
+    }
+    const limitEl = document.getElementById('v6SplitLimit');
+    const recurseEl = document.getElementById('v6SplitRecurse');
+    const drawSplit = () => renderV6Split(r, parseInt(splitSel.value,10), parseInt(limitEl.value,10) || 16, recurseEl.checked);
+    splitSel.addEventListener('change', drawSplit);
+    limitEl.addEventListener('input', drawSplit);
+    recurseEl.addEventListener('change', drawSplit);
+    drawSplit();
+
+    document.getElementById('v6DnsForward').addEventListener('click', () => v6DnsForward());
+    document.getElementById('v6DnsReverse').addEventListener('click', () => v6DnsReverseLookup(r.ip));
+  }
+
+  function renderV6Split(r, newPrefix, limit, recursive) {
+    const tableEl = document.getElementById('v6SplitTable');
+    const block = newPrefix === 128 ? 1n : (1n << BigInt(128 - newPrefix));
+    const totalBig = newPrefix === r.prefix ? 1n : (1n << BigInt(newPrefix - r.prefix));
+    const capN = Math.min(Number(totalBig > 1024n ? 1024n : totalBig), Math.max(1, limit));
+    let rows = '';
+    for (let i = 0; i < capN; i++) {
+      const net = r.network + BigInt(i) * block;
+      const last = net + block - 1n;
+      let extra = '';
+      if (recursive && newPrefix < 128) {
+        const childPrefix = Math.min(newPrefix + 1, 128);
+        const childBlock = (1n << BigInt(128 - childPrefix));
+        const c1 = net, c1L = c1 + childBlock - 1n;
+        const c2 = net + childBlock, c2L = c2 + childBlock - 1n;
+        extra = `<tr><td></td><td colspan="3" style="color:var(--text-dim); padding-left:2rem;">
+          ↳ /${childPrefix}: ${v6Compressed(c1)}…${v6Compressed(c1L)} | ${v6Compressed(c2)}…${v6Compressed(c2L)}
+        </td></tr>`;
+      }
+      rows += `<tr>
+        <td>${i}</td>
+        <td>${v6Compressed(net)}/${newPrefix}</td>
+        <td>${v6Compressed(net)} – ${v6Compressed(last)}</td>
+      </tr>${extra}`;
+    }
+    const note = totalBig > BigInt(capN)
+      ? `<p style="margin:0.75rem 0 0; font-size:0.82rem; color:var(--text-dim);">Showing first ${capN.toLocaleString()} of ${totalBig.toLocaleString()} subnets.</p>`
+      : '';
+    tableEl.innerHTML = `<div style="overflow-x:auto;">
+      <table class="subnets-table">
+        <thead><tr><th>#</th><th>Subnet</th><th>Range</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table></div>${note}`;
+  }
+
+  async function v6DnsForward() {
+    const out = document.getElementById('v6DnsResult');
+    const name = document.getElementById('v6DnsName').value.trim();
+    if (!name) { out.innerHTML = '<span class="err">Enter a hostname.</span>'; return; }
+    out.textContent = 'Looking up AAAA records for ' + name + '…';
+    try {
+      const ans = await doh(name, 'AAAA');
+      out.innerHTML = ans.length
+        ? '<span class="ok">AAAA records:</span> ' + ans.join(', ')
+        : '<span class="err">No AAAA records found.</span>';
+    } catch (e) { out.innerHTML = '<span class="err">DNS error: ' + e.message + '</span>'; }
+  }
+  async function v6DnsReverseLookup(ip) {
+    const out = document.getElementById('v6DnsResult');
+    const name = v6Reverse(ip);
+    out.textContent = 'Reverse lookup for ' + v6Compressed(ip) + '…';
+    try {
+      const ans = await doh(name, 'PTR');
+      out.innerHTML = ans.length
+        ? '<span class="ok">PTR:</span> ' + ans.join(', ')
+        : '<span class="err">No PTR records found.</span>';
+    } catch (e) { out.innerHTML = '<span class="err">DNS error: ' + e.message + '</span>'; }
+  }
+
+  document.querySelectorAll('[data-v6]').forEach(c => c.addEventListener('click', () => {
+    const [ip, p] = c.dataset.v6.split('/'); v6IpEl.value = ip; v6CidrEl.value = p; runV6();
+  }));
+
+  // ============================================================
+  //                       Batch
+  // ============================================================
+  const batchInputEl = document.getElementById('batchInput');
+  const errBatch = document.getElementById('errorBatch');
+  const resBatch = document.getElementById('resultsBatch');
+
+  document.getElementById('batchRun').addEventListener('click', runBatch);
+  document.getElementById('batchExportCsv').addEventListener('click', exportBatchCsv);
+
+  let lastBatch = [];
+
+  function runBatch() {
+    errBatch.classList.remove('show');
+    const lines = batchInputEl.value.split('\n')
+      .map(l => l.replace(/#.*$/, '').trim())
+      .filter(Boolean);
+
+    const results = [];
+    for (const line of lines) {
+      try {
+        // try IPv4 first if it has a dot and no colon-only structure
+        const looksV6 = line.includes(':') && !/^\d+\.\d+\.\d+\.\d+\/\d+$/.test(line);
+        let parsed;
+        if (looksV6) {
+          const [ip, p] = line.split('/');
+          if (p === undefined) throw new Error('Missing prefix');
+          const r = calcV6(ip.trim(), p.trim());
+          parsed = {
+            family: 'IPv6', input: line,
+            address: v6Compressed(r.ip), prefix: '/' + r.prefix,
+            network: v6Compressed(r.network) + '/' + r.prefix,
+            range: v6Compressed(r.network) + ' – ' + v6Compressed(r.broadcast),
+            total: r.total.toLocaleString(),
+            type: classifyV6(r.ip).label,
+          };
+        } else {
+          let ip = line, mask = '';
+          if (line.includes('/')) { const [a,b] = line.split('/'); ip = a.trim(); mask = b.trim(); }
+          else throw new Error('Missing prefix/mask');
+          const r = calcV4(ip, mask);
+          parsed = {
+            family: 'IPv4', input: line,
+            address: v4ToStr(r.ipNum), prefix: '/' + r.cidr,
+            network: v4ToStr(r.network) + '/' + r.cidr,
+            range: v4ToStr(r.firstHost) + ' – ' + v4ToStr(r.lastHost),
+            broadcast: v4ToStr(r.broadcast),
+            total: r.total.toLocaleString(),
+            usable: r.cidr >= 31 ? r.total : r.usable,
+            type: classifyV4(r.ipNum).label,
+          };
+        }
+        results.push({ ok: true, ...parsed });
+      } catch (err) {
+        results.push({ ok: false, input: line, error: err.message });
+      }
+    }
+    lastBatch = results;
+
+    if (!results.length) { resBatch.innerHTML = ''; errBatch.textContent = 'No input lines.'; errBatch.classList.add('show'); return; }
+
+    let rowsHtml = '';
+    for (const r of results) {
+      if (!r.ok) {
+        rowsHtml += `<tr><td colspan="6" style="color:var(--danger);">✗ ${r.input} — ${r.error}</td></tr>`;
+        continue;
+      }
+      rowsHtml += `<tr>
+        <td><span class="badge ${r.family==='IPv4'?'public':'special'}">${r.family}</span></td>
+        <td>${r.network}</td>
+        <td>${r.range}</td>
+        <td>${r.family==='IPv4' ? r.broadcast : '—'}</td>
+        <td>${r.total}</td>
+        <td>${r.type}</td>
       </tr>`;
     }
-    const truncatedNote = totalSubnets > limit
-      ? `<p style="margin:0.75rem 0 0; font-size:0.82rem; color:var(--text-dim);">Showing first ${limit.toLocaleString()} of ${totalSubnets.toLocaleString()} subnets.</p>`
-      : '';
-    tableEl.innerHTML = `
-      <div style="overflow-x:auto;">
-        <table class="subnets-table">
-          <thead><tr><th>#</th><th>Subnet</th><th>Host range</th><th>Broadcast</th></tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
+    resBatch.innerHTML = `<div class="card" style="overflow-x:auto;">
+      <h3 style="margin:0 0 0.85rem; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-dim);">Batch results (${results.length})</h3>
+      <table class="subnets-table">
+        <thead><tr><th>Family</th><th>Network</th><th>Host range</th><th>Broadcast</th><th>Total</th><th>Type</th></tr></thead>
+        <tbody>${rowsHtml}</tbody>
+      </table>
+    </div>`;
+  }
+
+  function exportBatchCsv() {
+    if (!lastBatch.length) { toast('Run batch first'); return; }
+    const header = ['family','input','address','prefix','network','range','broadcast','total','type','error'];
+    const lines = [header.join(',')];
+    for (const r of lastBatch) {
+      const row = header.map(h => {
+        const v = r[h] === undefined ? '' : String(r[h]);
+        return /[",\n]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v;
+      });
+      lines.push(row.join(','));
+    }
+    const blob = new Blob([lines.join('\n')], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'ipcalc-batch.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+    toast('CSV downloaded');
+  }
+
+  // ============================================================
+  //         Polish: Class/Mask dropdowns, visualizer,
+  //         reference tables, share link, persistence
+  // ============================================================
+
+  // --- IPv4 mask dropdown population ---
+  const v4ClassSel = document.getElementById('v4ClassSel');
+  const v4MaskSel  = document.getElementById('v4MaskSel');
+  for (let c = 0; c <= 32; c++) {
+    const opt = document.createElement('option');
+    const dotted = v4ToStr(cidrToMask(c));
+    const hosts = c === 32 ? 1 : c === 31 ? 2 : Math.pow(2, 32 - c) - 2;
+    opt.value = c;
+    opt.textContent = `/${c}  ${dotted}  (${hosts.toLocaleString()} host${hosts===1?'':'s'})`;
+    v4MaskSel.appendChild(opt);
+  }
+  v4MaskSel.value = '24';
+  v4ClassSel.addEventListener('change', () => {
+    const m = { A: 8, B: 16, C: 24 }[v4ClassSel.value];
+    if (m !== undefined) { v4MaskSel.value = String(m); v4CidrEl.value = String(m); runV4(); }
+  });
+  v4MaskSel.addEventListener('change', () => {
+    v4CidrEl.value = v4MaskSel.value;
+    runV4();
+  });
+
+  // --- Bit visualizer (injected into result panel) ---
+  function buildBitGridV4(ipNum, cidr) {
+    const bin = (ipNum >>> 0).toString(2).padStart(32, '0');
+    let html = '<div class="bit-grid">';
+    for (let oct = 0; oct < 4; oct++) {
+      html += '<div class="bit-octet">';
+      for (let b = 0; b < 8; b++) {
+        const idx = oct * 8 + b;
+        const cls = idx < cidr ? 'net' : 'host';
+        const boundary = idx === cidr ? ' boundary' : '';
+        html += `<span class="bit ${cls}${boundary}" data-idx="${idx}">${bin[idx]}</span>`;
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+  function buildBitGridV6(ip, prefix) {
+    const bin = ip.toString(2).padStart(128, '0');
+    let html = '<div class="bit-grid v6">';
+    for (let oct = 0; oct < 8; oct++) {
+      html += '<div class="bit-octet">';
+      for (let b = 0; b < 16; b++) {
+        const idx = oct * 16 + b;
+        const cls = idx < prefix ? 'net' : 'host';
+        const boundary = idx === prefix ? ' boundary' : '';
+        html += `<span class="bit ${cls}${boundary}" data-idx="${idx}">${bin[idx]}</span>`;
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+    return html;
+  }
+
+  function visualizerCardV4(r) {
+    return `<div class="result-card full-row visualizer">
+      <h3>
+        <span>Bit visualizer · click any bit to toggle prefix · drag slider</span>
+        <button class="share-btn" data-share="v4">Copy share link</button>
+      </h3>
+      <div style="font-family: ui-monospace, monospace; font-size:1.05rem; margin-bottom:0.5rem;">
+        <strong>${v4ToStr(r.ipNum)}</strong>/<span class="prefix-display" id="v4PrefixDisp" style="display:inline; min-width:auto;">${r.cidr}</span>
       </div>
-      ${truncatedNote}
-    `;
+      ${buildBitGridV4(r.ipNum, r.cidr)}
+      <div class="slider-row">
+        <span style="color:var(--text-dim); font-size:0.8rem;">/0</span>
+        <input type="range" id="v4Slider" min="0" max="32" value="${r.cidr}" style="--p:${(r.cidr/32)*100}%;" />
+        <span style="color:var(--text-dim); font-size:0.8rem;">/32</span>
+      </div>
+      <div class="vis-summary">
+        <span><b>Network</b>${v4ToStr(r.network)}</span>
+        <span><b>Broadcast</b>${v4ToStr(r.broadcast)}</span>
+        <span><b>Mask</b>${v4ToStr(r.mask)}</span>
+        <span><b>Hosts</b>${(r.cidr>=31?r.total:r.usable).toLocaleString()}</span>
+      </div>
+    </div>`;
+  }
+  function visualizerCardV6(r) {
+    const totalLabel = r.total > 100000n ? '2^' + (128 - r.prefix) : r.total.toLocaleString();
+    return `<div class="result-card full-row visualizer v6-bits">
+      <h3>
+        <span>Bit visualizer · ${128} bits · drag slider to change prefix</span>
+        <button class="share-btn" data-share="v6">Copy share link</button>
+      </h3>
+      <div style="font-family: ui-monospace, monospace; font-size:1rem; margin-bottom:0.5rem;">
+        <strong>${v6Compressed(r.ip)}</strong>/<span id="v6PrefixDisp" style="color:var(--accent); font-weight:700;">${r.prefix}</span>
+      </div>
+      ${buildBitGridV6(r.ip, r.prefix)}
+      <div class="slider-row">
+        <span style="color:var(--text-dim); font-size:0.8rem;">/0</span>
+        <input type="range" id="v6Slider" min="0" max="128" value="${r.prefix}" style="--p:${(r.prefix/128)*100}%;" />
+        <span style="color:var(--text-dim); font-size:0.8rem;">/128</span>
+      </div>
+      <div class="vis-summary">
+        <span><b>Network</b>${v6Compressed(r.network)}</span>
+        <span><b>Last</b>${v6Compressed(r.broadcast)}</span>
+        <span><b>Total</b>${totalLabel}</span>
+      </div>
+    </div>`;
   }
 
-  // ---------- Form ----------
-  const form = document.getElementById('calcForm');
-  const ipInput = document.getElementById('ipInput');
-  const cidrInput = document.getElementById('cidrInput');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    runCalc();
-  });
-
-  function runCalc() {
-    let ip = ipInput.value.trim();
-    let cidr = cidrInput.value.trim();
-    // Allow user to paste "1.2.3.4/24" into the IP field
-    if (ip.includes('/')) {
-      const [a, b] = ip.split('/');
-      ip = a.trim();
-      cidr = b.trim();
-      ipInput.value = ip;
-      cidrInput.value = cidr;
-    }
-    try {
-      clearError();
-      const r = calc(ip, cidr);
-      render(r, ip);
-    } catch (err) {
-      showError(err.message);
-    }
-  }
-
-  // Presets
-  document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      const [ip, c] = chip.dataset.preset.split('/');
-      ipInput.value = ip;
-      cidrInput.value = c;
-      runCalc();
+  // Wrap original render functions to prepend visualizer + wire slider/share
+  const _renderV4 = renderV4;
+  renderV4 = function(r) {
+    _renderV4(r);
+    resV4.insertAdjacentHTML('afterbegin', visualizerCardV4(r));
+    attachCopyHandlers(resV4);
+    const slider = document.getElementById('v4Slider');
+    slider.addEventListener('input', () => {
+      const c = parseInt(slider.value, 10);
+      v4CidrEl.value = String(c);
+      v4MaskSel.value = String(c);
+      slider.style.setProperty('--p', (c/32)*100 + '%');
+      runV4();
     });
+    resV4.querySelectorAll('.bit[data-idx]').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.dataset.idx, 10);
+        v4CidrEl.value = String(idx + 1);
+        v4MaskSel.value = String(idx + 1);
+        runV4();
+      });
+    });
+    const sb = resV4.querySelector('[data-share]');
+    if (sb) sb.addEventListener('click', () => shareLink('v4'));
+    persist('v4', v4IpEl.value, v4CidrEl.value);
+  };
+
+  const _renderV6 = renderV6;
+  renderV6 = function(r) {
+    _renderV6(r);
+    resV6.insertAdjacentHTML('afterbegin', visualizerCardV6(r));
+    attachCopyHandlers(resV6);
+    const slider = document.getElementById('v6Slider');
+    slider.addEventListener('input', () => {
+      const p = parseInt(slider.value, 10);
+      v6CidrEl.value = String(p);
+      slider.style.setProperty('--p', (p/128)*100 + '%');
+      runV6();
+    });
+    resV6.querySelectorAll('.bit[data-idx]').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.dataset.idx, 10);
+        v6CidrEl.value = String(idx + 1);
+        runV6();
+      });
+    });
+    const sb = resV6.querySelector('[data-share]');
+    if (sb) sb.addEventListener('click', () => shareLink('v6'));
+    persist('v6', v6IpEl.value, v6CidrEl.value);
+  };
+
+  // Auto-detect class on IPv4 IP change
+  v4IpEl.addEventListener('blur', () => {
+    try {
+      const cls = v4Class(parseIPv4(v4IpEl.value.trim()));
+      if (cls.name === 'A') v4ClassSel.value = 'A';
+      else if (cls.name === 'B') v4ClassSel.value = 'B';
+      else if (cls.name === 'C') v4ClassSel.value = 'C';
+      else v4ClassSel.value = 'any';
+    } catch {}
   });
 
-  // initial
-  runCalc();
+  // --- Reference tables ---
+  function buildV4Ref() {
+    let rows = '';
+    for (let c = 0; c <= 32; c++) {
+      const m = cidrToMask(c);
+      const total = c === 32 ? 1 : Math.pow(2, 32 - c);
+      const usable = c >= 31 ? total : total - 2;
+      rows += `<tr data-cidr="${c}">
+        <td>/${c}</td>
+        <td>${v4ToStr(m)}</td>
+        <td>${v4ToHex(m)}</td>
+        <td>${v4ToStr((~m)>>>0)}</td>
+        <td>${total.toLocaleString()}</td>
+        <td>${usable.toLocaleString()}</td>
+      </tr>`;
+    }
+    document.getElementById('refV4Body').innerHTML = `<table class="ref-table">
+      <thead><tr><th>Prefix</th><th>Netmask</th><th>Hex</th><th>Wildcard</th><th>Total</th><th>Usable</th></tr></thead>
+      <tbody>${rows}</tbody></table>`;
+    document.getElementById('refV4Body').querySelectorAll('tr[data-cidr]').forEach(tr => {
+      tr.addEventListener('click', () => {
+        v4CidrEl.value = tr.dataset.cidr;
+        v4MaskSel.value = tr.dataset.cidr;
+        runV4();
+        document.getElementById('refV4').open = false;
+      });
+    });
+  }
+  const v6Notes = {
+    0:'Default route',  3:'Currently allocated',  16:'RIR allocation',
+    23:'ISP allocation',32:'ISP minimum',         48:'Site / business',
+    56:'Home / small site', 64:'Single LAN (SLAAC)',
+    96:'IPv4-mapped boundary', 127:'Point-to-point', 128:'Single host'
+  };
+  function buildV6Ref() {
+    let rows = '';
+    for (let p = 0; p <= 128; p += (p < 32 ? 4 : p < 64 ? 4 : p < 96 ? 8 : 16)) {
+      const note = v6Notes[p] || '';
+      rows += `<tr data-prefix="${p}">
+        <td>/${p}</td>
+        <td>2^${128-p}</td>
+        <td>${note}</td>
+      </tr>`;
+    }
+    // also push a few extras
+    [48, 56, 64, 127, 128].forEach(p => {
+      if (!rows.includes(`data-prefix="${p}"`)) {
+        rows += `<tr data-prefix="${p}"><td>/${p}</td><td>2^${128-p}</td><td>${v6Notes[p] || ''}</td></tr>`;
+      }
+    });
+    document.getElementById('refV6Body').innerHTML = `<table class="ref-table">
+      <thead><tr><th>Prefix</th><th>Addresses</th><th>Typical use</th></tr></thead>
+      <tbody>${rows}</tbody></table>`;
+    document.getElementById('refV6Body').querySelectorAll('tr[data-prefix]').forEach(tr => {
+      tr.addEventListener('click', () => {
+        v6CidrEl.value = tr.dataset.prefix;
+        runV6();
+        document.getElementById('refV6').open = false;
+      });
+    });
+  }
+
+  // --- Share link via URL hash ---
+  function shareLink(family) {
+    const ip = family === 'v4' ? v4IpEl.value.trim() : v6IpEl.value.trim();
+    const c  = family === 'v4' ? v4CidrEl.value.trim() : v6CidrEl.value.trim();
+    const hash = `#${family}=${encodeURIComponent(ip)}/${encodeURIComponent(c)}`;
+    history.replaceState(null, '', location.pathname + location.search + hash);
+    const url = location.href;
+    navigator.clipboard.writeText(url).then(() => toast('Share link copied'))
+      .catch(() => toast('Copy failed'));
+  }
+  function readHash() {
+    const h = location.hash.slice(1);
+    if (!h) return;
+    const m = h.match(/^(v4|v6)=([^/]+)\/(\d+)/);
+    if (!m) return;
+    const [, fam, ip, c] = m;
+    if (fam === 'v4') {
+      v4IpEl.value = decodeURIComponent(ip); v4CidrEl.value = c; v4MaskSel.value = c;
+      document.querySelector('[data-tab="v4"]').click();
+      runV4();
+    } else {
+      v6IpEl.value = decodeURIComponent(ip); v6CidrEl.value = c;
+      document.querySelector('[data-tab="v6"]').click();
+      runV6();
+    }
+  }
+
+  // --- Persistence ---
+  function persist(family, ip, c) {
+    try { localStorage.setItem('ipcalc-' + family, JSON.stringify({ ip, c })); } catch {}
+  }
+  function restore() {
+    if (location.hash) return false; // hash wins
+    try {
+      const v4s = JSON.parse(localStorage.getItem('ipcalc-v4') || 'null');
+      if (v4s && v4s.ip) { v4IpEl.value = v4s.ip; v4CidrEl.value = v4s.c; v4MaskSel.value = v4s.c; }
+      const v6s = JSON.parse(localStorage.getItem('ipcalc-v6') || 'null');
+      if (v6s && v6s.ip) { v6IpEl.value = v6s.ip; v6CidrEl.value = v6s.c; }
+    } catch {}
+    return true;
+  }
+
+  // initial runs
+  buildV4Ref();
+  buildV6Ref();
+  restore();
+  if (location.hash) readHash();
+  else { runV4(); runV6(); }
 })();
 </script>
 
